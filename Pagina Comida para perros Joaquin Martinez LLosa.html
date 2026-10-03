@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriPet Canino | Nutrición Canina &amp; Delivery Inteligente</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Script -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f0f0f3",
+            "on-tertiary-fixed": "#291800",
+            "on-secondary-fixed": "#002106",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#beecb9",
+            "on-secondary-container": "#446c44",
+            "primary": "#a03b14",
+            "outline-variant": "#dec0b7",
+            "primary-fixed": "#ffdbcf",
+            "inverse-surface": "#2f3133",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#ffddb4",
+            "on-primary-fixed-variant": "#822700",
+            "on-surface-variant": "#57423b",
+            "primary-container": "#c0532a",
+            "surface-dim": "#d9dadc",
+            "on-secondary": "#ffffff",
+            "tertiary-fixed-dim": "#feb956",
+            "primary-fixed-dim": "#ffb59c",
+            "on-tertiary-container": "#fffbff",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed-variant": "#633f00",
+            "secondary-fixed-dim": "#a5d2a2",
+            "on-primary-fixed": "#390c00",
+            "surface-bright": "#f9f9fb",
+            "inverse-primary": "#ffb59c",
+            "tertiary": "#805200",
+            "background": "#f9f9fb",
+            "surface": "#f9f9fb",
+            "outline": "#8a726a",
+            "tertiary-container": "#a06901",
+            "on-secondary-fixed-variant": "#284f2a",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#fffbff",
+            "on-surface": "#1a1c1e",
+            "on-background": "#1a1c1e",
+            "surface-tint": "#a33e16",
+            "on-error": "#ffffff",
+            "surface-container": "#edeef0",
+            "surface-container-high": "#e8e8ea",
+            "secondary": "#406840",
+            "secondary-fixed": "#c1eebc",
+            "surface-variant": "#e2e2e5",
+            "surface-container-highest": "#e2e2e5",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f3f3f6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "margin-sm": "1rem",
+            "gutter-sm": "0.75rem",
+            "margin": "1.25rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- ==================== TOP NAVIGATION BAR (Shared Component Anchor) ==================== -->
+<header class="sticky top-0 z-50 flex items-center justify-between w-full px-space-lg py-space-sm bg-surface-container-lowest/95 backdrop-blur-md dark:bg-inverse-surface/95 border-b border-outline-variant shadow-sm transition-all duration-200">
+<div class="flex items-center gap-space-lg w-full max-w-7xl mx-auto">
+<!-- Brand Logo -->
+<a class="flex items-center gap-space-xs shrink-0 group" href="#">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform duration-200" data-icon="pets">pets</span>
+<span class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight">NutriPet Canino</span>
+</a>
+<!-- Address Quick Selector (UberEats style for Dogs) -->
+<button class="hidden lg:flex items-center gap-space-xs bg-surface-container-low hover:bg-surface-container py-space-xs px-space-md rounded-full border border-outline-variant/60 transition-colors text-left shrink-0">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="location_on">location_on</span>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant leading-none">Entregar a Max en</span>
+<span class="text-label-md font-label-md text-on-surface truncate max-w-[210px]">Av. Providencia 1420 • 25-35 min</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base ml-space-xs" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Search Bar -->
+<div class="flex-1 max-w-xl mx-auto relative hidden md:block">
+<span class="material-symbols-outlined absolute left-space-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low focus:bg-surface-container-lowest text-on-surface text-body-md rounded-full pl-11 pr-space-lg py-2 border-0 ring-1 ring-outline-variant/70 focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-on-surface-variant/70" placeholder="Buscar recetas frescas, BARF, marcas veterinarias o snacks..." type="text"/>
+</div>
+<!-- Navigation Links from JSON Anchor -->
+<nav class="hidden xl:flex items-center gap-space-md shrink-0">
+<a class="text-primary border-b-2 border-primary font-label-lg py-1" href="#">Nutrition Plans</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors py-1" href="#">Fresh Meals</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors py-1" href="#">Raw &amp; Kibles</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors py-1" href="#">Supplements</a>
+<a class="text-on-surface-variant hover:text-primary font-body-md transition-colors py-1" href="#">Treats</a>
+</nav>
+<!-- Dog Profile Chip & Actions -->
+<div class="flex items-center gap-space-sm shrink-0">
+<!-- Dog Profile Pill -->
+<div class="flex items-center gap-space-xs bg-primary-fixed/40 border border-primary/20 rounded-full px-space-md py-1 cursor-pointer hover:bg-primary-fixed/70 transition-colors">
+<div class="w-7 h-7 rounded-full overflow-hidden bg-primary flex items-center justify-center shrink-0">
+<img class="w-full h-full object-cover" data-alt="A joyful golden retriever sitting peacefully in natural morning sunlight, photographed in sharp studio clarity with warm beige and cream textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA7H3pLzI3rRdywVF3H_8A9EFs4v4j9wKzc91i_X1AlKUWtNegF8XM4oDBypeGR89YmPutfFeg_P1ac9CEiU6shenoUHZAcCxehVmMg6U0OVqIheUwao5-h56HMyaxOQLqGTLaU2i6WAxMvgOrwkE2jpNrVim8Xc8ORv78B3AFrg7ffpwtP23tft8CfV_3qOXLjNhv7guBaXPw0kDzQO_3Hown0rFe_GH4qHkdUiwhGbayhzzPsebUGQ"/>
+</div>
+<div class="flex flex-col text-left">
+<span class="text-label-md font-label-md text-primary leading-tight font-bold">Max</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant leading-none">32kg • Adulto</span>
+</div>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Trailing Icon Actions -->
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container transition-colors" title="Favoritos">
+<span class="material-symbols-outlined text-2xl" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary rounded-full hover:bg-surface-container transition-colors relative" title="Notificaciones">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+<span class="w-2 h-2 rounded-full bg-primary absolute top-2 right-2"></span>
+</button>
+<!-- Trailing Primary Action: Cart Button -->
+<button class="flex items-center gap-space-xs bg-primary text-on-primary hover:bg-primary-container px-space-md py-2.5 rounded-full font-label-lg transition-transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-lg" data-icon="shopping_bag">shopping_bag</span>
+<span>Carrito (2)</span>
+</button>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-space-lg py-space-md space-y-space-xl">
+<!-- ==================== SECTION 1: HERO & PANTRY ACTIVE TRACKER (Bento Row) ==================== -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+<!-- Hero Banner (8 Cols) -->
+<div class="lg:col-span-8 rounded-3xl bg-gradient-to-br from-primary-fixed/40 via-surface-container-lowest to-surface-container p-space-xl relative overflow-hidden border border-outline-variant/40 flex flex-col justify-between shadow-sm">
+<!-- Ambient Paw Glow -->
+<div class="absolute -right-12 -bottom-16 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-xl space-y-space-md">
+<div class="inline-flex items-center gap-space-xs bg-surface-container-lowest/90 px-space-md py-1 rounded-full border border-outline-variant shadow-xs">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="bolt">bolt</span>
+<span class="text-label-sm font-label-sm text-primary tracking-wide uppercase font-bold">Delivery Express en 35 Minutos o Auto-Envío</span>
+</div>
+<h1 class="text-headline-xl font-headline-xl text-on-surface font-extrabold tracking-tight leading-tight">
+            Nutrición fresca y balanceada para tu perro directo a tu puerta.
+          </h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-lg">
+            Platos cocinados a baja temperatura, dietas BARF certificadas y piensos holísticos calculados al gramo según la edad, peso y actividad de tu compañero.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-lg py-3.5 rounded-full font-label-lg transition-transform active:scale-95 shadow-md flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xl" data-icon="restaurant">restaurant</span>
+<span>Pedir ración recomendada para Max</span>
+</button>
+<button class="bg-surface-container-lowest hover:bg-surface-container border border-secondary text-secondary px-space-md py-3.5 rounded-full font-label-lg transition-transform active:scale-95 flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xl" data-icon="event_repeat">event_repeat</span>
+<span>Smart Auto-Ship (-15%)</span>
+</button>
+</div>
+</div>
+<!-- Metric Badges in Hero -->
+<div class="relative z-10 grid grid-cols-3 gap-space-md mt-space-xl pt-space-md border-t border-outline-variant/40">
+<div>
+<p class="text-headline-md font-headline-md font-black text-primary">100%</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Grado Humano Certificado</p>
+</div>
+<div>
+<p class="text-headline-md font-headline-md font-black text-secondary">480g</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Ración diaria calculada para Max</p>
+</div>
+<div>
+<p class="text-headline-md font-headline-md font-black text-tertiary">35 min</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Cadena de frío garantizada</p>
+</div>
+</div>
+</div>
+<!-- Live Order Tracking & Dog Pantry Widget (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Live Courier Card (UberEats Dog Style) -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-md border border-outline-variant/70 shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="flex h-2.5 w-2.5 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="text-label-sm font-label-sm text-secondary uppercase font-bold">En camino • 18 min restantes</span>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Orden #NP-8492</span>
+</div>
+<div class="py-space-sm flex items-start gap-space-md">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="two_wheeler">two_wheeler</span>
+</div>
+<div>
+<p class="text-label-lg font-label-lg text-on-surface">Repartidor en ruta con 4kg</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Estofado de Pavo &amp; Croquetas Salmón</p>
+<p class="text-label-sm font-label-sm text-secondary mt-1 flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-sm" data-icon="ac_unit">ac_unit</span>
+                Contenedor isotérmico a 4°C
+              </p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="pin_drop">pin_drop</span>
+<span class="text-label-sm font-label-sm text-on-surface truncate">Av. Providencia 1420</span>
+</div>
+<a class="text-label-sm font-label-sm text-primary hover:underline font-bold" href="#">Ver mapa en vivo</a>
+</div>
+</div>
+<!-- Daily Pantry & Food Inventory Widget ('Despensa de Max') -->
+<div class="bg-surface-container-lowest rounded-3xl p-space-md border border-outline-variant/70 shadow-sm flex flex-col flex-1 justify-between">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+<span class="text-headline-md font-headline-md text-on-surface text-base">Despensa de Max</span>
+</div>
+<span class="text-label-sm font-label-sm bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded-full font-bold">Alerta Ración</span>
+</div>
+<!-- Inventory Gauge & Progress -->
+<div class="space-y-space-xs my-space-xs">
+<div class="flex justify-between items-baseline">
+<span class="text-body-sm font-body-sm text-on-surface-variant">Croquetas Holísticas en casa:</span>
+<span class="text-label-lg font-label-lg text-primary font-bold">Te quedan 4 días</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full transition-all duration-500" style="width: 25%;"></div>
+</div>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>Ingesta diaria: 480g/día</span>
+<span>1.92 kg restantes</span>
+</div>
+</div>
+<div class="bg-primary-fixed/30 rounded-2xl p-space-sm flex items-center justify-between mt-space-xs border border-primary/10">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary" data-icon="autorenew">autorenew</span>
+<span class="text-label-sm font-label-sm text-on-surface font-medium">Reordenar en 1 click (Descuento 10%)</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-3 py-1.5 rounded-full text-label-sm font-label-sm transition-transform active:scale-95 font-bold">
+              Pedir Ahora
+            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 2: CANINE-EXCLUSIVE CATEGORY FILTERS ==================== -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">Categorías 100% Caninas</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Seleccionadas exclusivamente para las necesidades digestivas y anatómicas del perro</p>
+</div>
+<a class="text-label-md font-label-md text-primary hover:underline flex items-center gap-1 font-bold" href="#">
+<span>Ver todas las categorías</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<!-- Filter Buttons / Categories Carousel -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-space-sm">
+<!-- Filter 1 -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary hover:shadow-md transition-all text-center group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low group-hover:bg-primary-fixed flex items-center justify-center text-primary mb-space-xs transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="grain">grain</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold group-hover:text-primary transition-colors">Croquetas &amp; Pienso Holistic</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">38 Variedades</span>
+</button>
+<!-- Filter 2 (Active Style) -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-primary-fixed/20 border-2 border-primary shadow-sm text-center group">
+<div class="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center text-on-primary mb-space-xs">
+<span class="material-symbols-outlined text-2xl" data-icon="skillet">skillet</span>
+</div>
+<span class="text-label-md font-label-md text-primary font-bold">Comida Fresca al Vacío</span>
+<span class="text-label-sm font-label-sm text-primary/80 mt-0.5">Cocina Natural 100%</span>
+</button>
+<!-- Filter 3 -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary hover:shadow-md transition-all text-center group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low group-hover:bg-secondary-fixed flex items-center justify-center text-secondary mb-space-xs transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="ac_unit">ac_unit</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold group-hover:text-secondary transition-colors">BARF &amp; Crudo Congelado</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Carnes Biológicas</span>
+</button>
+<!-- Filter 4 -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary hover:shadow-md transition-all text-center group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low group-hover:bg-tertiary-fixed flex items-center justify-center text-tertiary mb-space-xs transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="soup_kitchen">soup_kitchen</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold group-hover:text-tertiary transition-colors">Patés &amp; Comida Húmeda</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Alta Palatabilidad</span>
+</button>
+<!-- Filter 5 -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary hover:shadow-md transition-all text-center group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low group-hover:bg-secondary-fixed flex items-center justify-center text-secondary mb-space-xs transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="bone">format_h4</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold group-hover:text-secondary transition-colors">Snacks Dentales &amp; Premios</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Salud e Higiene Oral</span>
+</button>
+<!-- Filter 6 -->
+<button class="flex flex-col items-center justify-center p-space-md rounded-2xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary hover:shadow-md transition-all text-center group">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low group-hover:bg-primary-fixed flex items-center justify-center text-primary mb-space-xs transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="medication">medication</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-bold group-hover:text-primary transition-colors">Suplementos Articulares</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Condroprotectores</span>
+</button>
+</div>
+</section>
+<!-- ==================== SECTION 3: RECOMENDADO PARA MAX (Dog Meal Cards Grid) ==================== -->
+<section class="space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="verified">verified</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface font-bold tracking-tight">Recomendado para Max (32kg • Adulto)</h2>
+</div>
+<p class="text-body-md font-body-md text-on-surface-variant">Formulaciones calibradas según su raza grande, peso ideal y nivel de movilidad en articulaciones.</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Filtrar por:</span>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface hover:bg-outline-variant transition-colors">Articulaciones</button>
+<button class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface hover:bg-outline-variant transition-colors">Sin Granos</button>
+</div>
+</div>
+<!-- Meal Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Card 1: Estofado de Pavo -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/70 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A gourmet bowl of warm slow-cooked turkey, diced pumpkin, sweet carrots, and brown rice tailored for dogs, photographed from a dynamic 45-degree angle in soft natural warm kitchen lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb5FYP1vXsq5Hcesrpsny6sF5PSijAuHH7pbtEOTuadK8o1JGgfFhuEmkB-epfqUnT3bm7Ua6JxgirEmOb2Q66IpuxIaVnxq8cOSuE5bWF3wTJknYF4RgccFUgODRoeMKTVllD2wvPs0EXczDz0pB-awlCOydmCKNII8x7JvSE59nH4xOmGp_mEFG1NYjvTqoqvBN_eNw_KJ0P94o6tnyMYDjQDAvDD3a_EkowoF6O3VAoHQhFIE_2hQ"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1">
+<span class="bg-primary text-on-primary text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold">Alto en proteína</span>
+<span class="bg-secondary-container text-on-secondary-container text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold">Fresco al Vacío</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs px-2 py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1 text-on-surface font-semibold shadow-xs">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="schedule">schedule</span>
+<span>20 min</span>
+</div>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors leading-snug">
+                Estofado de Pavo con Calabaza y Arroz Integral
+              </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Cocción suave a 75°C. Favorece digestión ligera y brillo en el manto de pelo largo.</p>
+<!-- Nutrition Specs -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs text-label-sm font-label-sm text-on-surface-variant bg-surface-container-low rounded-xl px-space-sm mt-space-xs">
+<div><span class="text-on-surface font-bold">480g</span> / porción recomendada</div>
+<div class="text-right"><span class="text-on-surface font-bold">640 kcal</span> por envase</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between border-t border-surface-container mt-space-xs">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Pack Diario (2 porc.)</span>
+<span class="text-headline-md font-headline-md text-on-surface font-black">$5.890</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-full font-label-md transition-transform active:scale-95 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+<span>Añadir</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Croquetas Salmón & Camote -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/70 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Premium salmon kibbles and organic sweet potato pellets arranged cleanly in an artisan ceramic dog dish with fresh salmon fillet and rosemary in warm morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3nU59GAAVAHTSPiNXKP6i6zyjb_mb9_LvXcJMVXrlqiZMCFKV3DGxROcvEf4T-lhf-cinsPbmma-aQJ_hXHnvgittKhxX0LML9WgMy7SoEFQpmodTP_B331C3-dkU-bHHJDrMk1gXhwyWSiCEbUgETW9wugtKSO1mu_M_7irFVsTcrPgfUCkY9cur9gRUn_4vSy92mn8PzWS2R6avLdWbDFBX0RoYQng0mBtYRGwkBlkxLGtttj4owA"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1">
+<span class="bg-secondary text-on-secondary text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold">Cuidado articular</span>
+<span class="bg-surface-container-lowest text-on-surface text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold shadow-xs">Sin Granos</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs px-2 py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1 text-on-surface font-semibold shadow-xs">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="schedule">schedule</span>
+<span>25 min</span>
+</div>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors leading-snug">
+                Croquetas Salmón &amp; Camote Sin Granos
+              </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Con glucosamina y condroitina activa para cartílagos en razas grandes de más de 30kg.</p>
+<!-- Nutrition Specs -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs text-label-sm font-label-sm text-on-surface-variant bg-surface-container-low rounded-xl px-space-sm mt-space-xs">
+<div><span class="text-on-surface font-bold">380g</span> / ración diaria</div>
+<div class="text-right"><span class="text-on-surface font-bold">1.480 kcal</span> / kg</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between border-t border-surface-container mt-space-xs">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Bolsa 3kg hermética</span>
+<span class="text-headline-md font-headline-md text-on-surface font-black">$22.490</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-full font-label-md transition-transform active:scale-95 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+<span>Añadir</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Barf Res Premium -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/70 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Raw BARF dog food patties made of grass-fed beef, ground bone, spinach, and grated carrots laid out on parchment paper in a bright Scandinavian kitchen setup." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD91RMhahw14zJZNgLHcbfrOogBydR83jXiWPU2aI7cikVWHNWOC8UGk8XRHchwoLUzGCASk2SH5F-CSf7l1wY5tdZjw2I3zbNVk0TgtTVE3mo0n_3eDHgCbciuCxenb8jo6913yBF2NEHtdcTnqAQdj4dqoriGBccfpe-D1bhZ2dks5l3cpucQ4K-7c-Kt4oG7QZoCcxe8K37bOiErnmrFiALjgpPlgvVeJHCB0TpEDkUlnJ2coFQFRw"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1">
+<span class="bg-tertiary text-on-tertiary text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold">BARF Crudo Biológico</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs px-2 py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1 text-on-surface font-semibold shadow-xs">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="schedule">schedule</span>
+<span>35 min</span>
+</div>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors leading-snug">
+                Barf Res Premium con Verduras
+              </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Congelado en porciones de descongelación rápida. Enriquecido con aceite de bacalao.</p>
+<!-- Nutrition Specs -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs text-label-sm font-label-sm text-on-surface-variant bg-surface-container-low rounded-xl px-space-sm mt-space-xs">
+<div><span class="text-on-surface font-bold">500g</span> hamburguesa</div>
+<div class="text-right"><span class="text-on-surface font-bold">780 kcal</span> / bloque</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between border-t border-surface-container mt-space-xs">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Pack 4 Unidades (2kg)</span>
+<span class="text-headline-md font-headline-md text-on-surface font-black">$14.990</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-full font-label-md transition-transform active:scale-95 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+<span>Añadir</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Snack Dental Clorofila & Espirulina -->
+<div class="rounded-3xl bg-surface-container-lowest border border-outline-variant/70 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group">
+<div>
+<div class="relative h-48 w-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Natural green spirulina and chlorophyll dental chew bones for large dogs styled alongside fresh mint leaves on a warm stone surface in soft ambient sunlight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsjM0X2kMKAAS9p1ulZUzozibdnzlQelo3Y93ANJgXmHCETTZPkJsmZgfm4sZIjaWVPPhRvTpd9-GQwChZK4uH8y_UGDeJkRlvhFDi7QW5hmZnnRFR7ZVxDmW9K4moRDTBLOI9QiIoXCKyiAyYHjSXoesSU0RlQKKntqvwfYaK7EGGw-VfWDAk_i634R2HNa13xn4yXwdvh2wUADFFwLw0iePUrT1bSI1reOnrSbv1Zrj4kHjtECwmWg"/>
+<div class="absolute top-3 left-3 flex flex-wrap gap-1">
+<span class="bg-secondary text-on-secondary text-label-sm font-label-sm px-2.5 py-1 rounded-full font-bold">Salud Dental 360°</span>
+</div>
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-xs px-2 py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1 text-on-surface font-semibold shadow-xs">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="schedule">schedule</span>
+<span>20 min</span>
+</div>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="text-headline-md font-headline-md text-on-surface group-hover:text-primary transition-colors leading-snug">
+                Snack Dental Clorofila &amp; Espirulina
+              </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Remueve sarro profundo y neutraliza el aliento canino con probióticos activos.</p>
+<!-- Nutrition Specs -->
+<div class="grid grid-cols-2 gap-space-xs py-space-xs text-label-sm font-label-sm text-on-surface-variant bg-surface-container-low rounded-xl px-space-sm mt-space-xs">
+<div><span class="text-on-surface font-bold">1 stick/día</span> (Masticable)</div>
+<div class="text-right"><span class="text-on-surface font-bold">85 kcal</span> / unidad</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0 flex items-center justify-between border-t border-surface-container mt-space-xs">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Bolsa x14 sticks grandes</span>
+<span class="text-headline-md font-headline-md text-on-surface font-black">$7.450</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-2 rounded-full font-label-md transition-transform active:scale-95 flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="add">add</span>
+<span>Añadir</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== SECTION 4: TRUST BADGES & CLINICAL VALIDATION ==================== -->
+<section class="rounded-3xl bg-surface-container-low border border-outline-variant/60 p-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Trust 1 -->
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-primary-fixed/60 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface font-bold">100% Grado Humano Canino</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Elaborado en cocinas autorizadas con carnes magras, vísceras nutritivas y superalimentos aptos para consumo de grado humano.</p>
+</div>
+</div>
+<!-- Trust 2 -->
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="health_and_safety">health_and_safety</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface font-bold">Certificación Veterinaria</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Planes respaldados por nutricionistas del Colegio Médico Veterinario para garantizar perfiles macro idóneos para cada etapa biológica.</p>
+</div>
+</div>
+<!-- Trust 3 -->
+<div class="flex items-start gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-3xl" data-icon="ac_unit">ac_unit</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-on-surface font-bold">Envíos Refrigerados Express</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Cajas térmicas selladas con packs de hielo en gel biológico que conservan las propiedades organolépticas hasta 36 horas tras la entrega.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ==================== FOOTER (Shared Component Anchor) ==================== -->
+<footer class="w-full px-space-lg py-space-xl mt-auto bg-surface-container-highest dark:bg-inverse-surface flex flex-col md:flex-row justify-between items-center gap-space-md border-t border-outline-variant">
+<div class="flex flex-col md:flex-row items-center gap-space-md text-center md:text-left">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="pets">pets</span>
+<span class="text-headline-md font-headline-md font-black text-primary">NutriPet Canino</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+        © 2024 NutriPet Canino Inc. Specialized Canine Clinical Nutrition &amp; Fresh Delivery.
+      </p>
+</div>
+<!-- Links from JSON Anchor -->
+<div class="flex flex-wrap justify-center gap-x-space-md gap-y-space-xs text-on-surface-variant">
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Vet Advisory Board</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Canine Calorie Standards</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Ingredient Transparency</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Safety &amp; Recalls</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary font-body-sm transition-colors" href="#">Privacy Policy</a>
+</div>
+</footer>
+</body></html>
